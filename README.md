@@ -1,2 +1,2 @@
 # aws-pipeline-mediaConvert
-Using AWS Elemental MediaConvert, This pipeline runs only when a new video file is added to a designated s3 bucket and converts video files from one format to another using MediaConvert and out putting it to another aws s3 bucket. 
+This project showcases an automated video transcoding pipeline utilizing AWS services. Upon uploading a video to a designated S3 bucket, an AWS Lambda function—deployed via the Serverless Framework—is triggered to initiate AWS Elemental MediaConvert for transcoding. The processed videos are then stored in a separate S3 bucket. Additionally, a user-friendly frontend interface, built with HTML, CSS, and JavaScript, allows users to upload videos and monitor processing statuses in real-time.
