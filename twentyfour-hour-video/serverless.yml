@@ -1,0 +1,30 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: k3vwdjustme
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: twentyfour-hour-video
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+
+custom:
+  upload-bucket: upload-bucket-name
+  transcode-bucket: transcode-bucket-name
+  transcode-video-role: arn:aws:iam::xxxxxxxx:role/transcode-video
+  media-endpoint: https://mediaconvert.us-east-1.amazonaws.com
+  media-role: arn:aws:iam::xxxxxx:role/media-convert-role
+
+functions:
+  transcode-video:
+    handler: transcode-video/index.handler
+    role: ${self:custom.transcode-video-role}
+    package:
+      individually: true
+    environment:
+      MEDIA_ENDPOINT: ${self:custom.media-endpoint}
+      MEDIA_ROLE: ${self:custom.media-role}
+      TRANSCODED_VIDEO_BUCKET: ${self:custom.transcode-bucket}
+    events:
+      - s3:
+          bucket: ${self:custom.upload-bucket}
+          event: s3:ObjectCreated:*

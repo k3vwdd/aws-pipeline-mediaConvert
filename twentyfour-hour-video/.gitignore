@@ -1,0 +1,3 @@
+node_modules
+.serverless
+./transcode-video/node_modules/
