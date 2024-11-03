@@ -1,9 +1,3 @@
-/**
- * Created by Peter Sbarski (@sbarski)
- * Serverless Architectures on AWS (2nd Edition)
- * https://www.manning.com/books/serverless-architectures-on-aws-second-edition
- * Last Updated: Jun 14, 2021
- */
 'use strict';
 const AWS = require('aws-sdk');
 const mediaConvert = new AWS.MediaConvert({
